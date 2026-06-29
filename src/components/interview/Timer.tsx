@@ -6,13 +6,13 @@ import { formatTime } from "@/utils/formatTime";
 
 interface TimerProps {
   initialSeconds?: number;
-  onTimeup?: () => void;
+  onTimeUp?: () => void;
   isListening: boolean;
 }
 
 export default function Timer({
   initialSeconds = 60,
-  onTimeup,
+  onTimeUp,
   isListening,
 }: TimerProps) {
   const { timeLeft, isActive, start, pause, reset } = useTimer({
@@ -30,6 +30,7 @@ export default function Timer({
       pause();
     }
   }, [isListening, start, pause]);
+  
   useEffect(() => {
     return () => reset();
   }, [reset]);
