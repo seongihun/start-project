@@ -16,7 +16,6 @@ export async function POST(request: Request) {
       );
     }
 
-    
     const prompt = `
       너는 기술 면접에서 지원자를 날카롭게 압박하는 5년 차 실무 프론트엔드 개발자 면접관이야.
       지원자가 제출한 기술 키워드 [${keyword}]에 대해, 면접에서 나올 법한 꼬리 질문(깊이 있는 질문)을 딱 3개만 뽑아줘.
@@ -31,6 +30,7 @@ export async function POST(request: Request) {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: prompt,
+      config: { responseMimeType: "application/json" },
     });
 
     const text = response.text || "";
