@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import Timer from "@/components/interview/Timer";
 import { useSpeechToText } from "@/hooks/useSpeechToText";
+import UserProfile from "./api/auth/UserProfile";
 
 interface InterviewRecord {
   id: string;
@@ -131,6 +132,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 text-gray-900 relative">
       <div className="max-w-xl mx-auto">
+        <UserProfile/>
         {/* 헤더 섹션 */}
         <div className="text-center mb-10">
           <h1 className="text-3xl font-extrabold text-blue-600 tracking-tight">🎯 꼬리 질문 메이커</h1>
