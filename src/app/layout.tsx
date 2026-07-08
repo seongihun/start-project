@@ -13,6 +13,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "🎯 AI 꼬리질문 메이커 | 실전 면접 트레이닝",
   description: "기술 키워드를 입력하고 AI 질문에 실전처럼 답변해 보세요!",
