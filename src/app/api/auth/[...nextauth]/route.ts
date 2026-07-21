@@ -1,8 +1,7 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
-
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
   // 1. 로그인 파트너로 '구글'을 등록합니다.
   providers: [
     GoogleProvider({
@@ -12,7 +11,7 @@ const handler = NextAuth({
   ],
   // 2. 보안을 위한 비밀키 세팅
   secret: process.env.NEXTAUTH_SECRET,
-  
+
   // 3. (공부 포인트) 로그인 성공 시 유저 정보를 커스텀 가공하는 콜백 함수
   callbacks: {
     async session({ session, token }: any) {
@@ -22,7 +21,8 @@ const handler = NextAuth({
       return session;
     },
   },
-});
+};
 
+const handler = NextAuth(authOptions);
 // Next.js가 GET 요청과 POST 요청 모두 이 핸들러로 처리하도록 내보냅니다.
 export { handler as GET, handler as POST };
