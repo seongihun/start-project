@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AuthContext from "./api/auth/AuthContext";
+import Header from "@/components/common/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,8 +31,13 @@ export default function RootLayout({
       lang="ko"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <AuthContext>{children}</AuthContext>
+      <body className="min-h-full flex flex-col bg-gray-50 text-gray-900">
+        <AuthContext>
+          {/* 💡 상단 헤더 배치 */}
+          <Header />
+          {/* 💡 메인 컨텐츠 영역 */}
+          <main className="flex-1">{children}</main>
+        </AuthContext>
       </body>
     </html>
   );
